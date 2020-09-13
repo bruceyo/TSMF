@@ -1,0 +1,50 @@
+# python main_student.py recognition -c config/ntu_rgbd/xsub/student.yaml
+
+work_dir: ./work_dir/ntu_rgbd/xsub/student
+
+# for ensemble during training
+skeleton_joints_pkl: ./trained_models/teacher_result_ntu_xsub.pkl
+
+# feeder
+feeder: feeder.feeder_multimodal_ntu.Feeder
+train_feeder_args:
+  debug: False
+  random_choose: False
+  centralization: False
+  random_move: False
+  window_size: -1
+  random_flip: False
+  random_interval: True
+  data_path: /media/bruce/2Tssd/data/ntu-rgbd-st-gcn/xsub/train_data.npy
+  label_path: /media/bruce/2Tssd/data/ntu-rgbd-st-gcn/xsub/train_label.pkl
+test_feeder_args:
+  debug: False
+  centralization: False
+  evaluation: True
+  data_path: /media/bruce/2Tssd/data/ntu-rgbd-st-gcn/xsub/val_data.npy
+  label_path: /media/bruce/2Tssd/data/ntu-rgbd-st-gcn/xsub/val_label.pkl
+
+# model
+model: net.student_ntu.Model
+model_args:
+  in_channels: 3
+  num_class: 60
+  dropout: 0.5
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'ntu-rgb+d'
+    strategy: 'spatial'
+
+# training
+fix_teacher: True
+teacher_weights: ./trained_models/teacher_ntu_xsub.pt
+device: [0,1,2,3]
+batch_size: 64
+test_batch_size: 64
+weight_decay: 0.0001
+base_lr: 0.1
+step: [10, 50]
+num_epoch: 80
+
+# debug
+debug: False
