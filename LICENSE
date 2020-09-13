@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Copyright (c) 2020,
 All rights reserved.
 
@@ -26,6 +27,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 MIT License
 
 Copyright (c) 2020 
+=======
+MIT License
+
+Copyright (c) 2020 Bruce
+>>>>>>> 87e6dd8f9f24ae88a630dd0f613297e498e814a5
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,4 +50,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+<<<<<<< HEAD
 >>>>>>> 38fc441f0c0a8fb9f3e13f76faac7ec04a34e45e
+=======
+>>>>>>> 87e6dd8f9f24ae88a630dd0f613297e498e814a5
