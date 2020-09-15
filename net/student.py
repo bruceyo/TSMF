@@ -24,7 +24,7 @@ class Model(nn.Module):
             :math:`M_{in}` is the number of instance in a frame.
     """
 
-    def __init__(self, num_class, **kwargs):
+    def __init__(self, num_class, graph_args, **kwargs):
         super().__init__()
 
         self.resnet = ResNet(pretrained=True)
@@ -45,7 +45,7 @@ class Model(nn.Module):
 
         weight = np.full((N, 1, 225, 225),0) # full_rgb_crop_sklweight_auto_1
         for n in range(N):
-            if True:#feature_s[n, :, :, 0].mean(1).mean(0) > feature_s[n, :, :, 1].mean(1).mean(0):
+            if feature_s[n, :, :, 0].mean(1).mean(0) > feature_s[n, :, :, 1].mean(1).mean(0):
                 for j, v in enumerate([3, 11, 7, 18, 14]):
                     feature = feature_s[n, :, v, 0]
                     temp = np.partition(-feature, 15)
@@ -54,7 +54,6 @@ class Model(nn.Module):
                     weight[n, 0, 45*j:45*(j+1), :] = feature[np.newaxis, np.newaxis]
             else:
                 for j, v in enumerate([3, 11, 7, 18, 14]):
-
                     feature = feature_s[n, :, v, 1]
                     temp = np.partition(-feature, 15)
                     #print('feature ', v, ' ', feature, -temp[:15].mean())

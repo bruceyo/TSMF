@@ -153,11 +153,11 @@ def cropBody(openpose_file, frame_file, action_id):
         return ''
 
 # to set the continue point S006C002P019R002A039
-sss = 6 # setup_id
-ccc = 2 # camera_id
-ppp = 19 # subject_id
-rrr = 2 # duplicate_id
-aaa = 39 #  action_id
+sss = 1 # setup_id
+ccc = 1 # camera_id
+ppp = 1 # subject_id
+rrr = 1 # duplicate_id
+aaa = 1 #  action_id
 
 file_count = 0
 skeleton_file_name = ''

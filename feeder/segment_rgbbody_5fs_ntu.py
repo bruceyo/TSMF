@@ -12,9 +12,9 @@ import matplotlib.image as mpimg
 from PIL import Image
 import numpy as np
 
-frame_path = '/media/bruce/2Tssd1/data/ntu_rgb_frames/'
+frame_path = '/media/bruce/2Tssd/data/ntu_rgb_frames/'
 openpose_path = '/media/bruce/2T/data/openpose/'
-save_path = '/media/bruce/2Tssd1/data/ntu_rgb_frames_crop/fivefs/'
+save_path = '/media/bruce/2Tssd/data/ntu_rgb_frames_crop/fivefs/'
 debug = False
 
 def filename_construct(setup_id, camera_id, subject_id, duplicate_id, action_id):

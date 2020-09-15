@@ -1,22 +1,31 @@
-# python main.py recognition -c config/st_gcn/pku_mmd_cs/train_skl.yaml
-work_dir: ../../data/st-gcn-pku/skl_cs_1
-weights: ../../data/st-gcn-pku/skl_cs/epoch65_model.pt
+# python main_rgb_sklweight_auto.py recognition -c config/st_gcn/ntu-xsub/train_rgb_crop_sklweight_auto.yaml
+
+work_dir: ../../data/st-gcn-pku/rgb_sklweight_cs
+#weights: ../../data/st-gcn-pku/rgb_sklweight_cs
+
+skeleton_joints_pkl: ../../data/st-gcn-pku/skl_cs_1/test_result_epoch75.pkl
 
 # feeder
-feeder: feeder.feeder_pku.Feeder
+feeder: feeder.feeder_fivefs_sklweight_auto_pku.Feeder
 train_feeder_args:
   debug: False
+  random_choose: False
   centralization: False
   random_move: False
+  window_size: -1
+  random_flip: False
+  random_interval: True
   data_path: /media/bruce/2Tssd/data/pku_st_gcn/xsub/train_data.npy
   label_path: /media/bruce/2Tssd/data/pku_st_gcn/xsub/train_label.pkl
 test_feeder_args:
+  debug: False
   centralization: False
+  evaluation: True
   data_path: /media/bruce/2Tssd/data/pku_st_gcn/xsub/val_data.npy
   label_path: /media/bruce/2Tssd/data/pku_st_gcn/xsub/val_label.pkl
 
 # model
-model: net.st_gcn_BK.Model
+model: net.st_gcn_rgb_sklweight_auto.Model
 model_args:
   in_channels: 3
   num_class: 51
@@ -26,13 +35,25 @@ model_args:
     layout: 'ntu-rgb+d'
     strategy: 'spatial'
 
-#optim
-weight_decay: 0.0001
+#'''
+#optim adam
+weight_decay: 0.0001 #0.0001
 base_lr: 0.1
 step: [10, 50]
+#optimizer: 'Adam'
+
+
+lambda_l1: 0
+lambda_l2: 0
 
 # training
+#device: [0,1,2,3]
+fix_teacher: True
+teacher_weights: ../../data/st-gcn-pku/skl_cs_1/epoch75_model.pt
 device: [0,1,2,3]
 batch_size: 64
 test_batch_size: 64
 num_epoch: 80
+
+# debug
+debug: False
