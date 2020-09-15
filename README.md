@@ -40,12 +40,20 @@ python tools/ntu_gendata.py --data_path <path to nturgbd+d_skeletons>
 ```
 where the ```<path to nturgbd+d_skeletons>``` points to the 3D skeletons modality of NTU RGB+D dataset you download.
 
-For evaluation, the processed data invludes: ```val_data and val_label``` are available from [GoogleDrive](https://drive.google.com/drive/folders/1D7zXKuk4YF4vGczrkMv87lapdMlwEy_S?usp=sharing). Please manually put it in folder: ```./data/NTU_RGBD```
+For evaluation, the processed data includes: ```val_data and val_label``` are available from [GoogleDrive](https://drive.google.com/drive/folders/1D7zXKuk4YF4vGczrkMv87lapdMlwEy_S?usp=sharing). Please manually put it in folder: ```./data/NTU_RGBD```
 
 #### PKU-MMD
-The dataset can be found in [PKU-MMD](https://github.com/ECHO960/PKU-MMD). PKU-MMD is a large scale benchmark for continuous multi-modality 3D human action understanding and covers a wide range of complex human activities with well annotated information. PKU-MMD contains 1076 long video sequences in 51 action categories, performed by 66 subjects in three camera views. It contains almost 20,000 action instances and 5.4 million frames in total. The dataset also provides multi-modality data sources, including RGB, depth, Infrared Radiation and Skeleton.
+The dataset can be found in [PKU-MMD](https://github.com/ECHO960/PKU-MMD). PKU-MMD is a large action recognition dataset that contains 1076 long video sequences in 51 action categories, performed by 66 subjects in three camera views. It contains almost 20,000 action instances and 5.4 million frames in total. We transfer the 3D skeleton modality to seperate action repetition files with the command:
+```
+python tools/utils/skeleton)to_ntu_format.py
+```
+After that, this command should be used to build the database for training or evaluation:
+```
+python tools/pku_gendata.py --data_path <path to pku_mmd_skeletons>
+```
+where the ```<path to nturgbd+d_skeletons>``` points to the 3D skeletons modality of PKU-MMD dataset you processed with the above command.
 
-For evaluation, the processed data invludes: ```val_data and val_label``` are available from [GoogleDrive](https://drive.google.com/drive/folders/1iwsf1RP0a8rWLoh55kHlFibB3edQtd01?usp=sharing). Please manually put it in folder: ```./data/PKU_MMD```
+For evaluation, the processed data includes: ```val_data and val_label``` are available from [GoogleDrive](https://drive.google.com/drive/folders/1iwsf1RP0a8rWLoh55kHlFibB3edQtd01?usp=sharing). Please manually put it in folder: ```./data/PKU_MMD```
 
 ### 2D Skeleton Retrieval from the RGB Video Input
 After installed the Openpose tool, run
@@ -62,7 +70,7 @@ python tools/gen_fivefs_<dataset>
 where the ```<dataset>``` must be ```ntu_rgbd``` or ```pku_mmd```, depending on the dataset you want to use.
 
 The processed ROI of NTU-RGB+D is available from [GoogleDrive](https://drive.google.com/file/d/1NjLSNaJjR-XuSv3MmrQisFJTTg-Vc8ID/view?usp=sharing);
-The processed ROI of PKU-MMD is available from [GoogleDrive](https://drive.google.com/file/d/1A5QdFCG4qLAxV4g7aRXgsy-uWOd1bD8W/view?usp=sharing).
+The processed ROI of PKU-MMD is available from [GoogleDrive](https://drive.google.com/file/d/1zHtjWF06mHjcMLsRhTIFiLPu9wpfoYs8/view?usp=sharing).
 ## Testing Pretrained Models
 <!-- ### Evaluation
 Once datasets and the pretrained models are ready, we can start the evaluation. -->
@@ -73,35 +81,43 @@ python main_student.py recognition -c config/ntu_rgbd/xsub/student_test.yaml
 ```
 Check the emsemble:
 ```
-python ensemble_ntu_rgbd.py --datasetsNTU_RGBD/xsub
+python ensemble.py --datasets ntu_xsub
 ```
-## Get pretrained m
 For **cross-view** evaluation in **NTU RGB+D**, run
 ```
 python main_student.py recognition -c config/ntu_rgbd/xview/student_test.yaml
 ```
 Check the ensemble:
 ```
-python ensemble_ntu_rgbd.py --datasets NTU_RGBD/xview
+python ensemble.py --datasets ntu_xview
 ```
 ### Evaluate on PKU-MMD
+For **cross-subject** evaluation in **PKU MMD**, run
 ```
-python main_student.py recognition -c config/pku_mmd/student_test.yaml
+python main_student.py recognition -c config/pku_mmd/xsub/student_test.yaml
 ```
 Check the emsemble:
 ```
-python ensemble.py
+python ensemble.py --datasets pku_xsub
+```
+For **cross-view** evaluation in **PKU MMD**, run
+```
+python main_student.py recognition -c config/pku_mmd/xview/student_test.yaml
+```
+Check the emsemble:
+```
+python ensemble.py --datasets pku_xview
 ```
 
 ## Training
-To train a new Teacher-Student model, run
+To train a new TSMF model, run
 ```
 python main_student.py recognition -c config/<dataset>/train_student.yaml [--work_dir <work folder>]
 ```
-where the ```<dataset>``` must be ```ntu_rgbd/xsub```, ```ntu_rgbd/xview``` or ```pku_mmd```, depending on the dataset you want to use.
+where the ```<dataset>``` must be ```ntu_rgbd/xsub```, ```ntu_rgbd/xview```, ```pku_mmd/xsub``` or ```pku_mmd/xview```, depending on the dataset you want to use.
 The training results, including **model weights**, configurations and logging files, will be saved under the ```./work_dir``` by default or ```<work folder>``` if you appoint it.
 
-You can modify the training parameters such as ```work_dir```, ```batch_size```, ```step```, ```base_lr``` and ```device``` in the command line or configuration files. The order of priority is:  command line > config file > default parameter. For more information, use ```main.py -h```.
+You can modify the training parameters such as ```work_dir```, ```batch_size```, ```step```, ```base_lr``` and ```device``` in the command line or configuration files. The order of priority is:  command line > config file > default parameter. For more information, use ```main_student.py -h```.
 
 ## Evaluation
 Finally, custom model evaluation can be achieved by this command as we mentioned above:
