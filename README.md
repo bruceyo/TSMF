@@ -138,6 +138,17 @@ This repo is based on
 
 Thanks to the original authors for their work!
 
+## Citation
+Please cite the following paper if you use this repository in your reseach.
+```
+@inproceedings{tsmf2021aaai,
+  title     = {Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition},
+  author    = {Bruce X.B. Yu and Yan Liu and Keith C.C. Chan},
+  booktitle = {AAAI},
+  year      = {2021},
+}
+```
+
 ## Contact
 For any question, feel free to contact
 ```
