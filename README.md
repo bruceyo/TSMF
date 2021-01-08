@@ -1,7 +1,7 @@
-# Teacher-Student-Network
+# TSMF Model
 Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition
 
-## Introduction
+## Abstract
 <!--
 This repository holds the codebase, dataset and models for the paper:
 **Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition**
@@ -15,10 +15,12 @@ update github version with below commands:
     <img src="resource/info/neural_fused_repre.png">
 </div>
 
+Indoor action recognition plays an important role in modern society, such as intelligent healthcare in large mobile cabin hospital. With the wide usage of depth sensors like Kinect, multimodal information including skeleton and RGB modalities brings a promising way to improve the performance. However, existing methods are either focusing on single data modality or failed to take the advantage of multiple data modalities. In this paper, we propose a Teacher-Student Multimodal Fusion (TSMF) model that fuses the skeleton and RGB modalities at model level for indoor action recognition. In our TSMF, we utilize a teacher network to transfer the structural knowledge of the skeleton modality to a student network for the RGB modality. With extensively experiments on two benchmarking datasets: NTU RGB+D and PKU-MMD, results show that the proposed TSMF consistently performs better than state-of-the-art single modal and multimodal methods. It also indicates that our TSMF could not only improve the accuracy of the student network but also significantly improve the ensemble accuracy.
+
 ## Prerequisites
 - Python3 (>3.5)
 - [PyTorch](http://pytorch.org/)
-- [Openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) **with** [Python API](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#python-api). (Optional: for training purpose)
+- [Openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) **with** [Python API](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/installation.md#python-api). (Optional: for evaluation purpose)
 - Other Python libraries can be installed by `pip install -r requirements.txt`
 
 ## Installation
@@ -45,7 +47,7 @@ For evaluation, the processed data includes: ```val_data and val_label``` are av
 #### PKU-MMD
 The dataset can be found in [PKU-MMD](https://github.com/ECHO960/PKU-MMD). PKU-MMD is a large action recognition dataset that contains 1076 long video sequences in 51 action categories, performed by 66 subjects in three camera views. It contains almost 20,000 action instances and 5.4 million frames in total. We transfer the 3D skeleton modality to seperate action repetition files with the command:
 ```
-python tools/utils/skeleton)to_ntu_format.py
+python tools/utils/skeleton_to_ntu_format.py
 ```
 After that, this command should be used to build the database for training or evaluation:
 ```
@@ -92,7 +94,7 @@ Check the ensemble:
 python ensemble.py --datasets ntu_xview
 ```
 ### Evaluate on PKU-MMD
-For **cross-subject** evaluation in **PKU MMD**, run
+For **cross-subject** evaluation in **PKU-MMD**, run
 ```
 python main_student.py recognition -c config/pku_mmd/xsub/student_test.yaml
 ```
@@ -100,7 +102,7 @@ Check the emsemble:
 ```
 python ensemble.py --datasets pku_xsub
 ```
-For **cross-view** evaluation in **PKU MMD**, run
+For **cross-view** evaluation in **PKU-MMD**, run
 ```
 python main_student.py recognition -c config/pku_mmd/xview/student_test.yaml
 ```
@@ -120,14 +122,21 @@ The training results, including **model weights**, configurations and logging fi
 You can modify the training parameters such as ```work_dir```, ```batch_size```, ```step```, ```base_lr``` and ```device``` in the command line or configuration files. The order of priority is:  command line > config file > default parameter. For more information, use ```main_student.py -h```.
 
 ## Evaluation
-Finally, custom model evaluation can be achieved by this command as we mentioned above:
+Finally, custom model evaluation can be performed by this command as we mentioned above:
 ```
 python main_student.py recognition -c config/<dataset>/student_test.yaml --weights <path to model weights>
 ```
 
+## Acknowledgements
+This repo is based on
+- [ST-GCN](https://github.com/yysijie/st-gcn)
+- [2s-AGCN](https://github.com/lshiwjx/2s-AGCN)
+- [MS-G3D](https://github.com/kenziyuliu/MS-G3D)
+
+Thanks to the original authors for their work!
+
 ## Contact
 For any question, feel free to contact
 ```
-xxx    : xxx@xxx
-xxx    : xxx@gmail.com
+Bruce Yu: bruceyo2011@gmail.com
 ```

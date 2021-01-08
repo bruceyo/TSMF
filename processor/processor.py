@@ -53,7 +53,7 @@ class Processor(IO):
             self.arg.train_feeder_args['debug'] = self.arg.debug
         self.data_loader = dict()
         if self.arg.phase == 'train':
-            self.arg.train_feeder_args['part'] = 'train'
+            #self.arg.train_feeder_args['part'] = 'train'
             self.data_loader['train'] = torch.utils.data.DataLoader(
                 dataset=Feeder(**self.arg.train_feeder_args),
                 batch_size=self.arg.batch_size,
@@ -62,7 +62,7 @@ class Processor(IO):
                     self.arg.device),
                 drop_last=True)
         if self.arg.test_feeder_args:
-            self.arg.test_feeder_args['part'] = 'val'
+            #self.arg.test_feeder_args['part'] = 'val'
             self.data_loader['test'] = torch.utils.data.DataLoader(
                 dataset=Feeder(**self.arg.test_feeder_args),
                 batch_size=self.arg.test_batch_size,

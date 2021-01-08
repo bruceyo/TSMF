@@ -11,7 +11,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import datasets, transforms
-from feeder import segment_rgbbody_5fs_pkummd as rgb_roi
+from feeder import segment_rgbbody_5fs_pku as rgb_roi
 
 # visualization
 import time
@@ -70,7 +70,7 @@ class Feeder(torch.utils.data.Dataset):
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
-        self.gussianmask = self.gussianmask()/255
+        #self.gussianmask = self.gussianmask()/255
 
     def load_data(self, mmap):
         # data: N C V T M

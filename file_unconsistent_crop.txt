@@ -1,0 +1,18 @@
+
+/media/bruce/2Tssd/data/pku_rgb_frames/0269-M/8187.jpg False
+/media/bruce/2T/data/openpose_pkummd/0269-M.avi/0269-M_000000008187_keypoints.json False
+
+/media/bruce/2Tssd/data/pku_rgb_frames/0269-M/8188.jpg False
+/media/bruce/2T/data/openpose_pkummd/0269-M.avi/0269-M_000000008188_keypoints.json False
+
+Empty: /media/bruce/2Tssd/data/pku_rgb_frames/0269-M/8188.jpg False
+/media/bruce/2T/data/openpose_pkummd/0269-M.avi/0269-M_000000008188_keypoints.json False
+
+/media/bruce/2Tssd/data/pku_rgb_frames/0054-M/4848.jpg False
+/media/bruce/2T/data/openpose_pkummd/0054-M.avi/0054-M_000000004848_keypoints.json False
+
+/media/bruce/2Tssd/data/pku_rgb_frames/0054-M/4849.jpg False
+/media/bruce/2T/data/openpose_pkummd/0054-M.avi/0054-M_000000004849_keypoints.json False
+
+Empty: /media/bruce/2Tssd/data/pku_rgb_frames/0054-M/4849.jpg False
+/media/bruce/2T/data/openpose_pkummd/0054-M.avi/0054-M_000000004849_keypoints.json False
