@@ -1,7 +1,7 @@
 # TSMF Model
 This repository holds the codebase, dataset and models for the paper:
 
-**Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. , AAAI 2021
+**Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. Chan, AAAI 2021
 
 <div align="center">
     <img src="resource/info/neural_fused_repre.png">
@@ -66,7 +66,7 @@ After installed the Openpose tool, run
 su
 sh tools/2D_Retrieve_<dataset>.sh
 ```
-where the ```<dataset>``` must be ```ntu_rgbd``` or ```pku_mmd```, depending on the dataset you want to use.
+where the ```<dataset>``` must be ```ntu_rgbd``` or ```pku_mmd```, depending on the dataset you want to use. We also provide the retrieved OpenPose 2D skeleton data for both datasets, which could downloaded from [GoogleDrive (OpenPose NTU RGB+D)](https://drive.google.com/drive/folders/1cjG9aC5-GOXkTs2LfnW4IZi34LX9nMZ5?usp=sharing) and [GoogleDrive (OpenPose PKU-MMD)](https://drive.google.com/drive/folders/1cjG9aC5-GOXkTs2LfnW4IZi34LX9nMZ5?usp=sharing).
 
 ### Generate Region of Interest
 ```
