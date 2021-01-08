@@ -1,6 +1,10 @@
 # TSMF Model
-Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition
+This repository holds the codebase, dataset and models for the paper:
+**Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. , AAAI 2021
 
+<div align="center">
+    <img src="resource/info/neural_fused_repre.png">
+</div>
 ## Abstract
 <!--
 This repository holds the codebase, dataset and models for the paper:
@@ -11,9 +15,6 @@ update github version with below commands:
   git add commit
   git push git@github.com:bruceyo/TSMF.git
 -->
-<div align="center">
-    <img src="resource/info/neural_fused_repre.png">
-</div>
 
 Indoor action recognition plays an important role in modern society, such as intelligent healthcare in large mobile cabin hospital. With the wide usage of depth sensors like Kinect, multimodal information including skeleton and RGB modalities brings a promising way to improve the performance. However, existing methods are either focusing on single data modality or failed to take the advantage of multiple data modalities. In this paper, we propose a Teacher-Student Multimodal Fusion (TSMF) model that fuses the skeleton and RGB modalities at model level for indoor action recognition. In our TSMF, we utilize a teacher network to transfer the structural knowledge of the skeleton modality to a student network for the RGB modality. With extensively experiments on two benchmarking datasets: NTU RGB+D and PKU-MMD, results show that the proposed TSMF consistently performs better than state-of-the-art single modal and multimodal methods. It also indicates that our TSMF could not only improve the accuracy of the student network but also significantly improve the ensemble accuracy.
 
@@ -126,6 +127,16 @@ Finally, custom model evaluation can be performed by this command as we mentione
 ```
 python main_student.py recognition -c config/<dataset>/student_test.yaml --weights <path to model weights>
 ```
+
+## Results
+<div align="center">
+    <img src="resource/info/improvement-01.png">
+</div>
+
+## Visualization of Fused Representation
+<div align="center">
+    <img src="resource/info/st-roi_action-01.png">
+</div>
 
 ## Acknowledgements
 This repo is based on
