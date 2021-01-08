@@ -1,10 +1,12 @@
 # TSMF Model
 This repository holds the codebase, dataset and models for the paper:
+
 **Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. , AAAI 2021
 
 <div align="center">
     <img src="resource/info/neural_fused_repre.png">
 </div>
+
 ## Abstract
 <!--
 This repository holds the codebase, dataset and models for the paper:
@@ -127,16 +129,6 @@ Finally, custom model evaluation can be performed by this command as we mentione
 ```
 python main_student.py recognition -c config/<dataset>/student_test.yaml --weights <path to model weights>
 ```
-
-## Results
-<div align="center">
-    <img src="resource/info/improvement-01.png">
-</div>
-
-## Visualization of Fused Representation
-<div align="center">
-    <img src="resource/info/st-roi_action-01.png">
-</div>
 
 ## Acknowledgements
 This repo is based on
