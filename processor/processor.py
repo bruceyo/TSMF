@@ -40,7 +40,7 @@ class Processor(IO):
         self.result = dict()
         self.iter_info = dict()
         self.epoch_info = dict()
-        self.meta_info = dict(epoch=0, iter=0, best_t1=0.2, is_best=False)
+        self.meta_info = dict(epoch=0, iter=0, best_t1=0.6, is_best=False)
         # colum 1-4: training meanloss, testing meanloss, testing top 1, testing top 5
         self.progress_info = np.zeros([self.arg.num_epoch,4])
 
@@ -127,16 +127,10 @@ class Processor(IO):
                     self.io.print_log('Eval epoch: {}'.format(epoch + 1))
                     self.test()
                     self.io.print_log('Done.')
-                    # Bruce 20190918
-                    self.progress_info[int(epoch/self.arg.eval_interval),1]  =  self.epoch_info['ls_cls']
-                    # save model is achieved the best Bruce 20191010
-                    if self.meta_info['is_best']:
-                        self.io.print_log('Save best Top1 at epoch:{}'.format(epoch + 1))
-                        filename = 'epoch{}_model.pt'.format(epoch + 1)
-                        self.io.save_model(self.model, filename)
-                        self.meta_info['is_best'] = False
-                        self.io.print_log('Save Done.')
 
+                    self.progress_info[int(epoch/self.arg.eval_interval),1]  =  self.epoch_info['ls_cls']
+                    filename = 'epoch{}_model.pt'.format(epoch + 1)
+                    self.io.save_model(self.model, filename)
 
             np.savetxt(os.path.join(self.arg.work_dir,'progress_info.csv'), self.progress_info, fmt='%f', delimiter=",", header=" Train_mean_loss, Test_mean_loss, Top_1, Top_5")
 

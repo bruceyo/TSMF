@@ -3,7 +3,8 @@
 work_dir: ../../data/st-gcn-pku/rgb_sklweight_cs
 #weights: ../../data/st-gcn-pku/rgb_sklweight_cs
 
-skeleton_joints_pkl: ../../data/st-gcn-pku/skl_cs_1/test_result_epoch75.pkl
+# for ensemble
+skeleton_joints_pkl: ./trained_models/pku_xsub_teacher.pkl
 
 # feeder
 feeder: feeder.feeder_fivefs_sklweight_auto_pku.Feeder

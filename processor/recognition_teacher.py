@@ -79,45 +79,8 @@ class REC_Processor(Processor):
         #self.epoch_info['top {}'.format(k)] = '{:.2f}'.format(100 * accuracy)
         if k==1:
             self.progress_info[int(self.meta_info['epoch']/self.arg.eval_interval), 2]  =  100 * accuracy
-            if accuracy > self.meta_info['best_t1'] and phase=='eval':
-                self.meta_info['best_t1'] = accuracy
-                self.meta_info['is_best'] = True
-                self.save_recall_precision(self.meta_info['epoch'])
         else:
             self.progress_info[int(self.meta_info['epoch']/self.arg.eval_interval), 3]  =  100 * accuracy
-
-    def save_recall_precision(self, epoch): #original input: (label, score),score refers to self.result
-        instance_num, class_num = self.result.shape
-        rank = self.result.argsort()
-        confusion_matrix = np.zeros([class_num, class_num])
-
-        for i in range(instance_num):
-            true_l = self.label[i]
-            pred_l = rank[i, -1]
-            confusion_matrix[true_l][pred_l] += 1
-        #np.savetxt("confusion_matrix.csv", confusion_matrix, fmt='%.3e', delimiter=",")
-        np.savetxt(os.path.join(self.arg.work_dir,'confusion_matrix_epoch_{}.csv').format(epoch+1), confusion_matrix, fmt='%d', delimiter=",")
-
-        precision = []
-        recall = []
-
-        for i in range(class_num):
-            true_p = confusion_matrix[i][i]
-            false_n = sum(confusion_matrix[i, :]) - true_p
-            false_p = sum(confusion_matrix[:, i]) - true_p
-            precision_ = true_p * 1.0 / (true_p + false_p)
-            recall_ = true_p * 1.0 / (true_p + false_n)
-            if np.isnan(precision_):
-                precision_ = 0
-            if np.isnan(recall_):
-                recall_ = 0
-            precision.append(precision_)
-            recall.append(recall_)
-        recall = np.asarray(recall)
-        precision = np.asarray(precision)
-        labels = np.asarray(range(1,class_num+1))
-        res = np.column_stack([labels.T, recall.T, precision.T])
-        np.savetxt(os.path.join(self.arg.work_dir,'recall_precision_epoch_{}.csv'.format(epoch+1)), res, fmt='%.4e', delimiter=",", header="Label,  Recall,  Precision")
 
     def train(self):
         self.model.train()
