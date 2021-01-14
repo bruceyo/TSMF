@@ -150,4 +150,4 @@ Please cite the following paper if you use this repository in your reseach.
 ```
 
 ## Contact
-For any question, feel free to contact ```Bruce Yu: b r u c e y o 2011 AT gmail.com(without space)```
+For any question, feel free to contact Bruce Yu: ```b r u c e y o 2011 AT gmail.com(remove space)``` 
