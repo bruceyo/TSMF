@@ -3,6 +3,8 @@ This repository holds the codebase, dataset and models for the paper:
 
 **Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. Chan, AAAI 2021
 
+Presentation is available on [SlidesLive](https://slideslive.com/38948568/multimodal-fusion-via-teacherstudent-network-for-indoor-action-recognition?ref=account-79851-popular)
+
 <div align="center">
     <img src="resource/info/neural_fused_repre.png">
 </div>
