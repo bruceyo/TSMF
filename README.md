@@ -1,7 +1,7 @@
 # TSMF Model
 This repository holds the codebase, dataset and models for the paper:
 
-**Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. Chan, AAAI 2021
+**Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. Chan, AAAI 2021 [PDF](https://ojs.aaai.org/index.php/AAAI/article/view/16430)
 
 Presentation is available on [SlidesLive](https://slideslive.com/38948568/multimodal-fusion-via-teacherstudent-network-for-indoor-action-recognition?ref=account-79851-popular)
 
