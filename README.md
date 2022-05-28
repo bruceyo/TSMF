@@ -153,6 +153,23 @@ Please cite the following paper if you use this repository in your reseach.
   year={2021}
 }
 ```
+```
+@ARTICLE {9782511,
+author = {B. B. Yu and Y. Liu and X. Zhang and S. Zhong and K. C. Chan},
+journal = {IEEE Transactions on Pattern Analysis & Machine Intelligence},
+title = {MMNet: A Model-based Multimodal Network for Human Action Recognition in RGB-D Videos},
+year = {5555},
+volume = {},
+number = {01},
+issn = {1939-3539},
+pages = {1-1},
+keywords = {skeleton;videos;data models;computational modeling;hidden markov models;writing;solid modeling},
+doi = {10.1109/TPAMI.2022.3177813},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month = {may}
+}
+```
 
 ## Contact
 For any question, feel free to contact Bruce Yu: ```b r u c e y o 2011 AT gmail.com(remove space)``` 
