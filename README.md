@@ -1,6 +1,7 @@
 # TSMF Model
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multimodal-fusion-via-teacher-student-network/action-recognition-in-videos-on-pku-mmd)](https://paperswithcode.com/sota/action-recognition-in-videos-on-pku-mmd?p=multimodal-fusion-via-teacher-student-network)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multimodal-fusion-via-teacher-student-network/action-recognition-in-videos-on-ntu-rgbd)](https://paperswithcode.com/sota/action-recognition-in-videos-on-ntu-rgbd?p=multimodal-fusion-via-teacher-student-network)
+
 This repository holds the codebase, dataset and models for the paper:
 
 **Multimodal Fusion via Teacher-Student Network for Indoor Action Recognition** Bruce X.B. Yu, Yan Liu, Keith C.C. Chan, AAAI 2021 ([PDF](https://ojs.aaai.org/index.php/AAAI/article/view/16430))
